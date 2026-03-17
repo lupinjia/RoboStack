@@ -1,0 +1,14 @@
+{
+  "name": "robostack",
+  "version": "2.0.0",
+  "description": "Robotics Website Navigation built with Tailwind CSS and DaisyUI",
+  "scripts": {
+    "build": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --minify",
+    "watch": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch",
+    "dev": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "daisyui": "^4.4.0"
+  }
+}

@@ -1,1018 +1,842 @@
 <!DOCTYPE html>
-<html lang="en"> <!--begin::Head-->
-
+<html lang="en" data-theme="robostack">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>RoboStack</title><!--begin::Primary Meta Tags-->
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="title" content="RoboStack">
+    <title>RoboStack</title>
     <meta name="author" content="lupinjia">
-    <meta name="description" content="Robotics Website Navi based on AdminLTE">
-    <meta name="keywords" content="adminlte, robotics, website, navigation, robot, webstack"><!--end::Primary Meta Tags-->
-    <link rel="icon" href="./assets/img/robostack.png"><!--begin::Fonts-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous"><!--end::Fonts--><!--begin::Third Party Plugin(OverlayScrollbars)-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css" integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous"><!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Third Party Plugin(Bootstrap Icons)-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="./assets/css/adminlte.css"><!--end::Required Plugin(AdminLTE)-->
-</head> <!--end::Head--> <!--begin::Body-->
-
-<body class="layout-fixed sidebar-expand-lg sidebar-mini sidebar-collapse bg-body-tertiary"> <!--begin::App Wrapper-->
-    <div class="app-wrapper"> <!--begin::Header-->
-        <nav class="app-header navbar navbar-expand bg-body"> <!--begin::Container-->
-            <div class="container-fluid"> <!--begin::Start Navbar Links-->
-                <ul class="navbar-nav">
-                    <li class="nav-item"> <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button"> <i class="bi bi-list"></i> </a> </li>
-                    <li class="nav-item d-none d-md-block"> <a href="https://lupinjia.github.io/" class="nav-link">Home</a> </li>
-                    <li class="nav-item d-none d-md-block"> <a href="https://github.com/lupinjia/RoboStack" class="nav-link">About</a> </li>
-                    <li class="nav-item dropdown">
-                        <a id="LanguageMenu" href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Languages
-                        </a>
-                        <ul aria-labelledby="LanguageMenu" class="dropdown-menu">
-                            <li>
-                                <a href="./index.html" class="dropdown-item">EN</a>
-                            </li>
-                            <li>
-                                <a href="./index_cn.html" class="dropdown-item">中文</a>
-                            </li>
+    <meta name="description" content="Robotics Website Navigation built with Tailwind CSS and DaisyUI">
+    <meta name="keywords" content="robotics, website, navigation, robot, webstack, tailwind, daisyui">
+    <link rel="icon" href="./assets/img/robostack.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./assets/css/output.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        .sidebar-menu::-webkit-scrollbar { width: 4px; }
+        .sidebar-menu::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-base-200 min-h-screen">
+    <div class="drawer lg:drawer-open">
+        <input id="sidebar-drawer" type="checkbox" class="drawer-toggle">
+        
+        <div class="drawer-content flex flex-col">
+            <nav class="navbar bg-base-100 shadow-md sticky top-0 z-30">
+                <div class="flex-none lg:hidden">
+                    <label for="sidebar-drawer" class="btn btn-square btn-ghost">
+                        <i class="bi bi-list text-xl"></i>
+                    </label>
+                </div>
+                <div class="flex-1">
+                    <a href="./index.html" class="btn btn-ghost text-xl gap-2">
+                        <img src="./assets/img/robostack.png" alt="RoboStack" class="w-8 h-8">
+                        <span class="hidden sm:inline">RoboStack</span>
+                    </a>
+                </div>
+                <div class="flex-none gap-2">
+                    <a href="https://lupinjia.github.io/" class="btn btn-ghost btn-sm hidden md:flex">Home</a>
+                    <div class="dropdown dropdown-end">
+                        <label tabindex="0" class="btn btn-ghost btn-sm gap-1">
+                            <i class="bi bi-globe"></i>
+                            <span class="hidden sm:inline">Languages</span>
+                            <i class="bi bi-chevron-down text-xs"></i>
+                        </label>
+                        <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow-lg bg-base-100 rounded-box w-32">
+                            <li><a href="./index.html" class="active">English</a></li>
+                            <li><a href="./index_cn.html">中文</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item d-none d-md-block">
-                        <a href="https://github.com/lupinjia/RoboStack" class="nav-link bi bi-github"></a>
-                    </li>
-                </ul> <!--end::Start Navbar Links--> <!--begin::End Navbar Links-->
-                <ul class="navbar-nav ms-auto"> <!--begin::Navbar Search-->
-                    <!--begin::Fullscreen Toggle-->
-                    <li class="nav-item"> <a class="nav-link" href="#" data-lte-toggle="fullscreen"> <i data-lte-icon="maximize" class="bi bi-arrows-fullscreen"></i> <i data-lte-icon="minimize" class="bi bi-fullscreen-exit" style="display: none;"></i> </a> </li> <!--end::Fullscreen Toggle--> <!--begin::User Menu Dropdown-->
-                    
-                </ul> <!--end::End Navbar Links-->
-            </div> <!--end::Container-->
-        </nav> <!--end::Header--> <!--begin::Sidebar-->
-        <aside class="app-sidebar bg-body shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
-            <div class="sidebar-brand"> <!--begin::Brand Link-->
-                <a href="./index.html" class="brand-link"> <!--begin::Brand Image-->
-                    <img src="./assets/img/robostack.png" alt="RoboStack Logo" class="brand-image opacity-100 shadow"> <!--end::Brand Image--> <!--begin::Brand Text--> 
-                    <span class="brand-text fw-light">RoboStack</span> <!--end::Brand Text--> 
-                </a> <!--end::Brand Link--> 
-            </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
-            <div class="sidebar-wrapper"> 
-                <nav class="mt-2"> <!--begin::Sidebar Menu-->
-                    <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item"> 
-                            <a href="#FrequentlyUsed" class="nav-link"> 
-                                <i class="nav-icon bi bi-star"></i>
-                                <p>
-                                    Frequently Used
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item"> 
-                            <a href="#" class="nav-link""> 
-                                <i class="nav-icon bi bi-newspaper"></i>
-                                <p>News & Community
-                                    <i class="nav-arrow bi bi-chevron-right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#News" class="nav-link">
-                                        <i class="nav-icon bi bi-circle"></i>
-                                        <p>News</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#TechCommunity" class="nav-link">
-                                        <i class="nav-icon bi bi-circle"></i>
-                                        <p>Tech Community</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#EverydayLife" class="nav-link">
-                                        <i class="nav-icon bi bi-circle"></i>
-                                        <p>Everyday Life</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-tools"></i>
-                                <p>Handy Tools</p>
-                                <i class="nav-arrow bi bi-chevron-right"></i>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#ResearchTools" class="nav-link">
-                                        <i class="nav-icon bi bi-circle"></i>
-                                        <p>Research Tools</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#OfficeTools" class="nav-link">
-                                        <i class="nav-icon bi bi-circle"></i>
-                                        <p>Office Tools</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#SearchTools" class="nav-link">
-                                        <i class="nav-icon bi bi-circle"></i>
-                                        <p>Search Tools</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#VPN" class="nav-link">
-                                        <i class="nav-icon bi bi-circle"></i>
-                                        <p>VPN</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-gear"></i>
-                                <p>Tech Resources</p>
-                                <i class="nav-arrow bi bi-chevron-right"></i>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#Simulation&RobotLearning" class="nav-link">
-                                        <i class="nav-icon bi bi-circle"></i>
-                                        <p>Simulation & Robot Learning</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#Circuit" class="nav-link">
-                                        <i class="nav-icon bi bi-circle"></i>
-                                        <p>Circuit</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#Control" class="nav-link">
-                                        <i class="nav-icon bi bi-circle"></i>
-                                        <p>Control</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"> 
-                            <a href="#ThoughtfulBlogs" class="nav-link"> 
-                                <i class="nav-icon bi bi-compass"></i>
-                                <p>
-                                    Thoughtful Blogs
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item"> 
-                            <a href="#NavRecommendation" class="nav-link"> 
-                                <i class="nav-icon bi bi-compass"></i>
-                                <p>
-                                    Nav Recommendation
-                                </p>
-                            </a>
-                        </li>
-                    </ul> <!--end::Sidebar Menu-->
-                </nav>
-            </div> <!--end::Sidebar Wrapper-->
-        </aside> <!--end::Sidebar--> <!--begin::App Main-->
-        <main class="app-main"> 
-            <div class="app-content-header"> 
-                <div class="container-fluid"><!--begin::Frequently Used-->
-                    <h5 id="FrequentlyUsed"> <!-- normal text is black -->
-                        <i class="bi bi-tag ms-3 me-2"></i> <!-- ms for margin-left, me for margin-right -->
+                    </div>
+                    <label class="swap swap-rotate btn btn-ghost btn-sm">
+                        <input type="checkbox" id="theme-toggle" />
+                        <i class="bi bi-sun swap-off"></i>
+                        <i class="bi bi-moon-stars swap-on"></i>
+                    </label>
+                    <a href="https://github.com/lupinjia/RoboStack" target="_blank" class="btn btn-ghost btn-sm">
+                        <i class="bi bi-github text-lg"></i>
+                    </a>
+                </div>
+            </nav>
+
+            <main class="flex-1 p-4 md:p-6 lg:p-8">
+                <section id="FrequentlyUsed" class="mb-8">
+                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-base-content">
+                        <i class="bi bi-star-fill text-warning"></i>
                         Frequently Used
-                    </h5>
-                </div>
-            </div>
-            <div class="row ms-3 me-3">
-                <div class="col-sm-3"><!--Notion-->
-                    <div class="info-box" onclick="window.open('https://notion.so', '_blank')" data-original-title="https://notion.so">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/notion.png" alt="Notion Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Notion</span>
-                          <span class="info-box-text">Free & Powerful Knowledge Management</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--Medium-->
-                    <div class="info-box" onclick="window.open('https://medium.com/', '_blank')" data-original-title="https://medium.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/medium.png" alt="Medium Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Medium</span>
-                          <span class="info-box-text">Outstanding English Blog Platform</span>
-                        </div>
-                      </div>
-                </div> 
-                <div class="col-sm-3""><!--Youtube-->
-                    <div class="info-box" onclick="window.open('https://www.youtube.com/', '_blank')" data-original-title="https://www.youtube.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/youtube.png" alt="Youtube Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Youtube</span>
-                          <span class="info-box-text">Biggest Video Platform</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--Google-->
-                    <div class="info-box" onclick="window.open('https://www.google.com/', '_blank')" data-original-title="https://www.google.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/google.png" alt="Google Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Google</span>
-                          <span class="info-box-text">Most Powerful Search Engine</span>
-                        </div>
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <a href="https://notion.so" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/notion.png" alt="Notion" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Notion</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Free & Powerful Knowledge Management</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://medium.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/medium.png" alt="Medium" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Medium</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Outstanding English Blog Platform</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.youtube.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/youtube.png" alt="Youtube" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Youtube</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Biggest Video Platform</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.google.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/google.png" alt="Google" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Google</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Most Powerful Search Engine</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://haobit.top/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="https://haobit.top/apple-touch-icon.png" alt="HaoBIT" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">HaoBIT</h3>
+                                    <p class="text-sm text-base-content/70 truncate">BIT Official Notification gathered</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://github.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/github.png" alt="Github" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Github</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Open Source Community</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="col-sm-3"><!--HaoBIT-->
-                    <div class="info-box" onclick="window.open('https://haobit.top/', '_blank')" data-original-title="https://haobit.top/">
-                        <span class="info-box-icon">
-                            <img src="https://haobit.top/apple-touch-icon.png" alt="HaoBIT Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">HaoBIT</span>
-                          <span class="info-box-text">BIT Official Notification gathered</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--Github-->
-                    <div class="info-box" onclick="window.open('https://github.com/', '_blank')" data-original-title="https://github.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/github.png" alt="Github Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Github</span>
-                          <span class="info-box-text">Open Source Community</span>
-                        </div>
-                      </div>
-                </div>
-            </div><!--end::Frequently Used--><!--begin::News-->
-            <div class="app-content-header"> 
-                <div class="container-fluid">
-                    <h5 id="News"> <!-- normal text is black -->
-                        <i class="bi bi-tag ms-3 me-2"></i> <!-- ms for margin-left, me for margin-right -->
+                </section>
+
+                <section id="News" class="mb-8">
+                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-base-content">
+                        <i class="bi bi-newspaper text-info"></i>
                         News
-                    </h5>
-                </div>
-            </div><!--机器之心-->
-            <div class="row ms-3 me-3">
-                <div class="col-sm-3">
-                    <div class="info-box" onclick="window.open('https://www.jiqizhixin.com/', '_blank')" data-original-title="https://www.jiqizhixin.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/jiqizhixin.jpg" alt="Jiqizhixin Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Robotic Heart</span>
-                          <span class="info-box-text">Real-time News on Robotics & AI</span>
-                        </div>
-                      </div>
-                </div><!--机器人大讲堂-->
-                <div class="col-sm-3"">
-                    <div class="info-box" onclick="window.open('https://www.leaderobot.com/', '_blank')" data-original-title="https://www.leaderobot.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/leaderobot.png" alt="Leaderobot Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Robot Auditorium</span>
-                          <span class="info-box-text">Follow Advance in Robotics</span>
-                        </div>
-                      </div>
-                </div>
-            </div><!--end::News--><!--begin::Tech Community-->
-            <div class="app-content-header"> 
-                <div class="container-fluid">
-                    <h5 id="TechCommunity"> <!-- normal text is black -->
-                        <i class="bi bi-tag ms-3 me-2"></i> <!-- ms for margin-left, me for margin-right -->
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <a href="https://www.jiqizhixin.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/jiqizhixin.jpg" alt="Jiqizhixin" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Robotic Heart</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Real-time News on Robotics & AI</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.leaderobot.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/leaderobot.png" alt="Leaderobot" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Robot Auditorium</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Follow Advance in Robotics</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="TechCommunity" class="mb-8">
+                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-base-content">
+                        <i class="bi bi-people text-success"></i>
                         Tech Community
-                    </h5>
-                </div>
-            </div><!--立创-->
-            <div class="row ms-3 me-3">
-                <div class="col-sm-3">
-                    <div class="info-box" onclick="window.open('https://oshwhub.com/', '_blank')" data-original-title="https://oshwhub.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/oshwhub.png" alt="Lichuang Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">OSHWHUB</span>
-                          <span class="info-box-text">Hardware Open Source Community from China</span>
-                        </div>
-                      </div>
-                </div><!--DFRobot-->
-                <div class="col-sm-3"">
-                    <div class="info-box" onclick="window.open('https://www.dfrobot.com.cn/', '_blank')" data-original-title="https://www.dfrobot.com.cn/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/dfrobot.png" alt="DFRobot Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">DFRobot</span>
-                          <span class="info-box-text">Geek Community for Intelligent <br> Hardware & Robot</span>
-                        </div>
-                      </div>
-                </div> <!--Reddit-->
-                <div class="col-sm-3"">
-                    <div class="info-box" onclick="window.open('https://www.reddit.com/', '_blank')" data-original-title="https://www.reddit.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/reddit.png" alt="Reddit Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Reddit</span>
-                          <span class="info-box-text">All-embracing Interest Community</span>
-                        </div>
-                      </div>
-                </div><!--OpenLoong-->
-                <div class="col-sm-3"">
-                    <div class="info-box" onclick="window.open('https://www.openloong.org.cn/cn', '_blank')" data-original-title="https://www.openloong.org.cn/cn">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/openloong.png" alt="Openloong Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Openloong</span>
-                          <span class="info-box-text">Open Source Community for <br> Loong Robots</span>
-                        </div>
-                      </div>
-                </div><!--Discord-->
-                <div class="col-sm-3"">
-                    <div class="info-box" onclick="window.open('https://discord.com/', '_blank')" data-original-title="https://discord.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/discord.png" alt="Discord Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Discord</span>
-                          <span class="info-box-text">Social Platform not just for Gamers</span>
-                        </div>
-                      </div>
-                </div><!--Instructables-->
-                <div class="col-sm-3"">
-                    <div class="info-box" onclick="window.open('https://www.instructables.com/', '_blank')" data-original-title="https://www.instructables.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/instructables.png" alt="Inst Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Instructables</span>
-                          <span class="info-box-text">DIY Community</span>
-                        </div>
-                      </div>
-                </div>
-            </div><!--end::Tech Community-->
-            <div class="app-content-header"> 
-                <div class="container-fluid">
-                    <h5 id="EverydayLife"> <!-- normal text is black -->
-                        <i class="bi bi-tag ms-3 me-2"></i> <!-- ms for margin-left, me for margin-right -->
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <a href="https://oshwhub.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/oshwhub.png" alt="OSHWHUB" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">OSHWHUB</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Hardware Open Source Community from China</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.dfrobot.com.cn/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/dfrobot.png" alt="DFRobot" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">DFRobot</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Geek Community for Intelligent Hardware & Robot</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.reddit.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/reddit.png" alt="Reddit" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Reddit</h3>
+                                    <p class="text-sm text-base-content/70 truncate">All-embracing Interest Community</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.openloong.org.cn/cn" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/openloong.png" alt="Openloong" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Openloong</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Open Source Community for Loong Robots</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://discord.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/discord.png" alt="Discord" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Discord</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Social Platform not just for Gamers</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.instructables.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/instructables.png" alt="Instructables" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Instructables</h3>
+                                    <p class="text-sm text-base-content/70 truncate">DIY Community</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="EverydayLife" class="mb-8">
+                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-base-content">
+                        <i class="bi bi-cup-hot text-warning"></i>
                         Everyday Life
-                    </h5>
-                </div>
-            </div>
-            <div class="row ms-3 me-3"><!--tianya-->
-                <div class="col-sm-3">
-                    <div class="info-box" onclick="window.open('https://www.tianya.im/', '_blank')" data-original-title="https://www.tianya.im/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/tianya.png" alt="TianYa Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Tian Ya</span>
-                          <span class="info-box-text">wisdom of Chinese Internet</span>
-                        </div>
-                      </div>
-                </div><!--haobit-->
-                <div class="col-sm-3">
-                    <div class="info-box" onclick="window.open('https://haobit.top/', '_blank')" data-original-title="https://haobit.top/">
-                        <span class="info-box-icon">
-                            <img src="https://haobit.top/apple-touch-icon.png" alt="HaoBIT Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">HaoBIT</span>
-                          <span class="info-box-text">BIT Official Notification gathered</span>
-                        </div>
-                      </div>
-                </div>
-            </div><!--end::生活时事--><!--begin::科研工具-->
-            <div class="app-content-header"> 
-                <div class="container-fluid">
-                    <h5 id="ResearchTools"> <!-- normal text is black -->
-                        <i class="bi bi-tag ms-3 me-2"></i> <!-- ms for margin-left, me for margin-right -->
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <a href="https://www.tianya.im/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/tianya.png" alt="TianYa" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Tian Ya</h3>
+                                    <p class="text-sm text-base-content/70 truncate">wisdom of Chinese Internet</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://haobit.top/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="https://haobit.top/apple-touch-icon.png" alt="HaoBIT" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">HaoBIT</h3>
+                                    <p class="text-sm text-base-content/70 truncate">BIT Official Notification gathered</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="ResearchTools" class="mb-8">
+                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-base-content">
+                        <i class="bi bi-book text-secondary"></i>
                         Research Tools
-                    </h5>
-                </div>
-            </div><!--Google Scholar-->
-            <div class="row ms-3 me-3">
-                <div class="col-sm-3">
-                    <div class="info-box" onclick="window.open('https://scholar.google.com/', '_blank')" data-original-title="https://scholar.google.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/google_scholar.png" alt="GoogleScholar Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Google Scholar</span>
-                          <span class="info-box-text">Frequently-used Paper Search Tool</span>
-                        </div>
-                      </div>
-                </div><!--Research Rabbit-->
-                <div class="col-sm-3"">
-                    <div class="info-box" onclick="window.open('https://researchrabbitapp.com/', '_blank')" data-original-title="https://researchrabbitapp.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/research_rabbit.png" alt="ResearchRabbit Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Research Rabbit</span>
-                          <span class="info-box-text">Search Literature via Relevance</span>
-                        </div>
-                      </div>
-                </div> <!--Research Gate-->
-                <div class="col-sm-3"">
-                    <div class="info-box" onclick="window.open('https://www.researchgate.net/', '_blank')" data-original-title="https://www.researchgate.net/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/research_gate.png" alt="ResearchGate Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Research Gate</span>
-                          <span class="info-box-text">Social Media for Researchers</span>
-                        </div>
-                      </div>
-                </div><!--BIThesis-->
-                <div class="col-sm-3"">
-                    <div class="info-box" onclick="window.open('https://bithesis.bitnp.net/', '_blank')" data-original-title="https://bithesis.bitnp.net/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/bithesis.png" alt="BIThesis Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">BIThesis</span>
-                          <span class="info-box-text">Latex Template for BIT Thesis</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--Overleaf-->
-                    <div class="info-box" onclick="window.open('https://cn.overleaf.com/', '_blank')" data-original-title="https://cn.overleaf.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/overleaf.png" alt="Overleaf Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Overleaf</span>
-                          <span class="info-box-text">Online Latex Editor</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--Latex Reference(Luogu)-->
-                    <div class="info-box" onclick="window.open('https://www.luogu.com.cn/article/1gxob6zc', '_blank')" data-original-title="https://www.luogu.com.cn/article/1gxob6zc">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/latex.png" alt="Latex Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Latex Formula</span>
-                          <span class="info-box-text">Latex Formula Reference</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--Adobe color extractor-->
-                    <div class="info-box" onclick="window.open('https://color.adobe.com/create/image', '_blank')" data-original-title="https://color.adobe.com/create/image">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/adobe.png" alt="Adobe Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Color Extractor</span>
-                          <span class="info-box-text">Adobe Color Extractor</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--Google Scholar sort tool-->
-                    <div class="info-box" onclick="window.open('https://harzing.com/resources/publish-or-perish', '_blank')" data-original-title="https://harzing.com/resources/publish-or-perish">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/pop.png" alt="Pop Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Publish or Perish</span>
-                          <span class="info-box-text">Sort Papers by citations</span>
-                        </div>
-                      </div>
-                </div>
-            </div><!--end::科研工具--><!--begin::办公工具-->
-            <div class="app-content-header"> 
-                <div class="container-fluid">
-                    <h5 id="OfficeTools"> <!-- normal text is black -->
-                        <i class="bi bi-tag ms-3 me-2"></i> <!-- ms for margin-left, me for margin-right -->
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <a href="https://scholar.google.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/google_scholar.png" alt="Google Scholar" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Google Scholar</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Frequently-used Paper Search Tool</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://researchrabbitapp.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/research_rabbit.png" alt="Research Rabbit" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Research Rabbit</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Search Literature via Relevance</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.researchgate.net/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/research_gate.png" alt="Research Gate" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Research Gate</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Social Media for Researchers</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://bithesis.bitnp.net/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/bithesis.png" alt="BIThesis" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">BIThesis</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Latex Template for BIT Thesis</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://cn.overleaf.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/overleaf.png" alt="Overleaf" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Overleaf</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Online Latex Editor</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.luogu.com.cn/article/1gxob6zc" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/latex.png" alt="Latex Formula" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Latex Formula</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Latex Formula Reference</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://color.adobe.com/create/image" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/adobe.png" alt="Color Extractor" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Color Extractor</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Adobe Color Extractor</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://harzing.com/resources/publish-or-perish" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/pop.png" alt="Publish or Perish" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Publish or Perish</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Sort Papers by citations</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="OfficeTools" class="mb-8">
+                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-base-content">
+                        <i class="bi bi-briefcase text-accent"></i>
                         Office Tools
-                    </h5>
-                </div>
-            </div>
-            <div class="row ms-3 me-3"><!--Imgur-->
-                <div class="col-sm-3">
-                    <div class="info-box" onclick="window.open('https://imgur.com/', '_blank')" data-original-title="https://imgur.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/imgur.png" alt="Imgur Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Imgur</span>
-                          <span class="info-box-text">Upload Images & Get it through URL</span>
-                        </div>
-                      </div>
-                </div><!--Speedpdf-->
-                <div class="col-sm-3"">
-                    <div class="info-box" onclick="window.open('https://speedpdf.com/zh-cn/', '_blank')" data-original-title="https://speedpdf.com/zh-cn/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/speedpdf.png" alt="Speedpdf Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Speedpdf</span>
-                          <span class="info-box-text">Free PDF Conversion Site</span>
-                        </div>
-                      </div>
-                </div> 
-                <div class="col-sm-3""><!--Free Convert-->
-                    <div class="info-box" onclick="window.open('https://www.freeconvert.com/', '_blank')" data-original-title="https://www.freeconvert.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/freeconvert.jpg" alt="FreeConvert Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">FreeConvert</span>
-                          <span class="info-box-text">Free Format Converter for Multiple Types</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--draw.io-->
-                    <div class="info-box" onclick="window.open('https://app.diagrams.net/', '_blank')" data-original-title="https://app.diagrams.net/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/drawio.png" alt="draw.io Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">draw.io</span>
-                          <span class="info-box-text">Free Flowchart Maker</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--OBS Studio-->
-                    <div class="info-box" onclick="window.open('https://obsproject.com/', '_blank')" data-original-title="https://obsproject.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/obs_studio.png" alt="OBSStudio Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">OBS Studio</span>
-                          <span class="info-box-text">Free & Powerful <br> Screen Recording & Live Streaming</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--get emoji-->
-                    <div class="info-box" onclick="window.open('https://getemoji.com/', '_blank')" data-original-title="https://getemoji.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/getemoji.png" alt="Getemoji Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Get Emoji</span>
-                          <span class="info-box-text">Copy & Paste emoji</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--versus-->
-                    <div class="info-box" onclick="window.open('https://versus.com/en', '_blank')" data-original-title="https://versus.com/en">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/versus.jpg" alt="Versus Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Versus</span>
-                          <span class="info-box-text">Compare everything</span>
-                        </div>
-                      </div>
-                </div>
-            </div><!--end::办公工具-->
-            <div class="app-content-header"><!--begin::搜索工具-->
-                <div class="container-fluid">
-                    <h5 id="SearchTools"> <!-- normal text is black -->
-                        <i class="bi bi-tag ms-3 me-2"></i> <!-- ms for margin-left, me for margin-right -->
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <a href="https://imgur.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/imgur.png" alt="Imgur" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Imgur</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Upload Images & Get it through URL</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://speedpdf.com/zh-cn/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/speedpdf.png" alt="Speedpdf" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Speedpdf</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Free PDF Conversion Site</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.freeconvert.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/freeconvert.jpg" alt="FreeConvert" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">FreeConvert</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Free Format Converter for Multiple Types</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://app.diagrams.net/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/drawio.png" alt="draw.io" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">draw.io</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Free Flowchart Maker</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://obsproject.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/obs_studio.png" alt="OBS Studio" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">OBS Studio</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Free & Powerful Screen Recording & Live Streaming</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://getemoji.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/getemoji.png" alt="Get Emoji" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Get Emoji</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Copy & Paste emoji</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://versus.com/en" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/versus.jpg" alt="Versus" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Versus</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Compare everything</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="SearchTools" class="mb-8">
+                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-base-content">
+                        <i class="bi bi-search text-primary"></i>
                         Search Tools
-                    </h5>
-                </div>
-            </div>
-            <div class="row ms-3 me-3">
-                <div class="col-sm-3"><!--Z-library-->
-                    <div class="info-box" onclick="window.open('https://go-to-zlibrary.com/', '_blank')" data-original-title="https://go-to-zlibrary.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/zlibrary.png" alt="zlibrary Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Z-library</span>
-                          <span class="info-box-text">Free Book Resources</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--jiumo diary-->
-                    <div class="info-box" onclick="window.open('https://www.jiumodiary.com/', '_blank')" data-original-title="https://www.jiumodiary.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/jiumodiary.png" alt="jiumodiary Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">jiumo diary</span>
-                          <span class="info-box-text">Search for Free Books</span>
-                        </div>
-                      </div>
-                </div><!--Google-->
-                <div class="col-sm-3"">
-                    <div class="info-box" onclick="window.open('https://www.google.com/', '_blank')" data-original-title="https://www.google.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/google.png" alt="Google Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Google</span>
-                          <span class="info-box-text">Most Powerful Search Engine</span>
-                        </div>
-                      </div>
-                </div><!--bing-->
-                <div class="col-sm-3"">
-                    <div class="info-box" onclick="window.open('https://cn.bing.com/', '_blank')" data-original-title="https://cn.bing.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/bing.jpg" alt="Bing Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Bing</span>
-                          <span class="info-box-text">Worse than Google, better than Baidu</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--CSDN-->
-                    <div class="info-box" onclick="window.open('https://www.csdn.net/', '_blank')" data-original-title="https://www.csdn.net/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/csdn.png" alt="CSDN Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">CSDN</span>
-                          <span class="info-box-text">Search Problem Soulution, Blogs</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--StackOverflow-->
-                    <div class="info-box" onclick="window.open('https://stackoverflow.com/', '_blank')" data-original-title="https://stackoverflow.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/stackoverflow.png" alt="StackOverflow Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">StackOverflow</span>
-                          <span class="info-box-text">Search Solutions for Tech Problems</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--Github-->
-                    <div class="info-box" onclick="window.open('https://github.com/', '_blank')" data-original-title="https://github.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/github.png" alt="Github Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Github</span>
-                          <span class="info-box-text">Open Source Community</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--kkdaxue-->
-                    <div class="info-box" onclick="window.open('https://www.kkdaxue.com/', '_blank')" data-original-title="https://www.kkdaxue.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/kkdaxue.svg" alt="KKdaxue Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">kkdaxue</span>
-                          <span class="info-box-text">Find Advice for University</span>
-                        </div>
-                      </div>
-                </div>
-            </div><!--end::搜索工具--><!--begin::科学上网-->
-            <div class="app-content-header"> 
-                <div class="container-fluid">
-                    <h5 id="VPN"> <!-- normal text is black -->
-                        <i class="bi bi-tag ms-3 me-2"></i> <!-- ms for margin-left, me for margin-right -->
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <a href="https://go-to-zlibrary.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/zlibrary.png" alt="Z-library" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Z-library</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Free Book Resources</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.jiumodiary.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/jiumodiary.png" alt="jiumo diary" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">jiumo diary</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Search for Free Books</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.google.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/google.png" alt="Google" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Google</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Most Powerful Search Engine</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://cn.bing.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/bing.jpg" alt="Bing" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Bing</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Worse than Google, better than Baidu</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.csdn.net/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/csdn.png" alt="CSDN" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">CSDN</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Search Problem Solution, Blogs</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://stackoverflow.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/stackoverflow.png" alt="StackOverflow" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">StackOverflow</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Search Solutions for Tech Problems</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://github.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/github.png" alt="Github" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Github</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Open Source Community</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.kkdaxue.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/kkdaxue.svg" alt="kkdaxue" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">kkdaxue</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Find Advice for University</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="VPN" class="mb-8">
+                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-base-content">
+                        <i class="bi bi-shield-lock text-error"></i>
                         VPN
-                    </h5>
-                </div>
-            </div>
-            <div class="row ms-3 me-3"><!--cfw-->
-                <div class="col-sm-3">
-                    <div class="info-box" onclick="window.open('https://www.clashforwindows.net/', '_blank')" data-original-title="https://www.clashforwindows.net/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/clash.png" alt="Clash Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Clash</span>
-                          <span class="info-box-text">VPN Client</span>
-                        </div>
-                      </div>
-                </div><!--机场汇总-->
-                <div class="col-sm-3"">
-                    <div class="info-box" onclick="window.open('https://github.com/WallKiller-glitch/V2raySSSSRShare?tab=readme-ov-file', '_blank')" data-original-title="https://github.com/WallKiller-glitch/V2raySSSSRShare?tab=readme-ov-file">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/github.png" alt="Github Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Airport List</span>
-                          <span class="info-box-text">Airport List</span>
-                        </div>
-                      </div>
-                </div><!--Sausage Cloud-->
-                <div class="col-sm-3"">
-                    <div class="info-box" onclick="window.open('https://reborn.kaochang.ltd/#/login', '_blank')" data-original-title="https://reborn.kaochang.ltd/#/login">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/null.png" alt="Null Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Sausage Cloud</span>
-                          <span class="info-box-text">Cheap with Huge Amount</span>
-                        </div>
-                      </div>
-                </div>
-            </div><!--end::科学上网-->
-            <div class="app-content-header"><!--begin::仿真与机器人学习-->
-                <div class="container-fluid">
-                    <h5 id="Simulation&RobotLearning"> <!-- normal text is black -->
-                        <i class="bi bi-tag ms-3 me-2"></i> <!-- ms for margin-left, me for margin-right -->
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <a href="https://www.clashforwindows.net/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/clash.png" alt="Clash" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Clash</h3>
+                                    <p class="text-sm text-base-content/70 truncate">VPN Client</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://github.com/WallKiller-glitch/V2raySSSSRShare?tab=readme-ov-file" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/github.png" alt="Airport List" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Airport List</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Airport List</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://reborn.kaochang.ltd/#/login" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/null.png" alt="Sausage Cloud" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Sausage Cloud</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Cheap with Huge Amount</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="Simulation&RobotLearning" class="mb-8">
+                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-base-content">
+                        <i class="bi bi-cpu text-info"></i>
                         Simulation & Robot Learning
-                    </h5>
-                </div>
-            </div>
-            <div class="row ms-3 me-3"><!--Simulately-->
-                <div class="col-sm-3">
-                    <div class="info-box" onclick="window.open('https://simulately.wiki/', '_blank')" data-original-title="https://simulately.wiki/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/simulately.png" alt="Simulately Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Simulately</span>
-                          <span class="info-box-text">Simulator Wiki</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--ProtoTwin-->
-                    <div class="info-box" onclick="window.open('https://prototwin.com/', '_blank')" data-original-title="https://prototwin.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/prototwin.svg" alt="ProtoTwin Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">ProtoTwin</span>
-                          <span class="info-box-text">Industrial Simulation based on Web</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--RoboHive-->
-                    <div class="info-box" onclick="window.open('https://sites.google.com/view/robohive', '_blank')" data-original-title="https://sites.google.com/view/robohive">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/robohive.png" alt="RoboHive Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">RoboHive</span>
-                          <span class="info-box-text">Robot Learning Framework based on Mujuco</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--opensim-->
-                    <div class="info-box" onclick="window.open('https://simtk.org/projects/opensim', '_blank')" data-original-title="https://simtk.org/projects/opensim">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/opensim.png" alt="opensim Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">opensim</span>
-                          <span class="info-box-text">Muscle Skeleton Simulation</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--mujoco-->
-                    <div class="info-box" onclick="window.open('https://mujoco.org/', '_blank')" data-original-title="https://mujoco.org/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/deepmind.png" alt="DeepMind Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">mujoco</span>
-                          <span class="info-box-text">Advanced Physics Simulator</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--webots-->
-                    <div class="info-box" onclick="window.open('https://cyberbotics.com/', '_blank')" data-original-title="https://cyberbotics.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/webots.png" alt="Webots Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">webots</span>
-                          <span class="info-box-text">Open Source Robot Simulator</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--IsaacGym-->
-                    <div class="info-box" onclick="window.open('https://developer.nvidia.com/isaac-gym', '_blank')" data-original-title="https://developer.nvidia.com/isaac-gym">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/nvidia.png" alt="Nvidia Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">IsaacGym</span>
-                          <span class="info-box-text">Simulator totally on GPU</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--LeggedGym-->
-                    <div class="info-box" onclick="window.open('https://github.com/leggedrobotics/legged_gym', '_blank')" data-original-title="https://github.com/leggedrobotics/legged_gym">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/rsl.png" alt="RSL Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">LeggedGym</span>
-                          <span class="info-box-text">IsaacGym Env for Legged Robots</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--Hands on RL-->
-                    <div class="info-box" onclick="window.open('https://hrl.boyuai.com/', '_blank')" data-original-title="https://hrl.boyuai.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/hrl.jpg" alt="HRL Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Hands on RL</span>
-                          <span class="info-box-text">Tutorial for RL</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--EasyRL-->
-                    <div class="info-box" onclick="window.open('https://datawhalechina.github.io/easy-rl/#/', '_blank')" data-original-title="https://datawhalechina.github.io/easy-rl/#/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/easyrl.png" alt="EasyRL Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">EasyRL</span>
-                          <span class="info-box-text">EasyRL Online Version</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--CSdiy-->
-                    <div class="info-box" onclick="window.open('https://csdiy.wiki/', '_blank')" data-original-title="https://csdiy.wiki/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/csdiy.png" alt="CSdiy Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">CSdiy</span>
-                          <span class="info-box-text">How to learn CS yourself</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--D2L-->
-                    <div class="info-box" onclick="window.open('https://d2l.ai/', '_blank')" data-original-title="https://d2l.ai/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/d2l.png" alt="D2L Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Dive into Deep Learning</span>
-                          <span class="info-box-text">Tutorial for DL</span>
-                        </div>
-                      </div>
-                </div>
-            </div>
-            <div class="app-content-header"><!--begin::电路-->
-                <div class="container-fluid">
-                    <h5 id="Circuit"> <!-- normal text is black -->
-                        <i class="bi bi-tag ms-3 me-2"></i> <!-- ms for margin-left, me for margin-right -->
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <a href="https://simulately.wiki/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/simulately.png" alt="Simulately" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Simulately</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Simulator Wiki</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://prototwin.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/prototwin.svg" alt="ProtoTwin" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">ProtoTwin</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Industrial Simulation based on Web</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://sites.google.com/view/robohive" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/robohive.png" alt="RoboHive" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">RoboHive</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Robot Learning Framework based on Mujuco</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://simtk.org/projects/opensim" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/opensim.png" alt="opensim" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">opensim</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Muscle Skeleton Simulation</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://mujoco.org/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/deepmind.png" alt="mujoco" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">mujoco</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Advanced Physics Simulator</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://cyberbotics.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/webots.png" alt="webots" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">webots</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Open Source Robot Simulator</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://developer.nvidia.com/isaac-gym" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/nvidia.png" alt="IsaacGym" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">IsaacGym</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Simulator totally on GPU</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://github.com/leggedrobotics/legged_gym" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/rsl.png" alt="LeggedGym" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">LeggedGym</h3>
+                                    <p class="text-sm text-base-content/70 truncate">IsaacGym Env for Legged Robots</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://hrl.boyuai.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/hrl.jpg" alt="Hands on RL" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Hands on RL</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Tutorial for RL</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://datawhalechina.github.io/easy-rl/#/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/easyrl.png" alt="EasyRL" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">EasyRL</h3>
+                                    <p class="text-sm text-base-content/70 truncate">EasyRL Online Version</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://csdiy.wiki/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/csdiy.png" alt="CSdiy" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">CSdiy</h3>
+                                    <p class="text-sm text-base-content/70 truncate">How to learn CS yourself</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://d2l.ai/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/d2l.png" alt="Dive into Deep Learning" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Dive into Deep Learning</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Tutorial for DL</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="Circuit" class="mb-8">
+                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-base-content">
+                        <i class="bi bi-motherboard text-warning"></i>
                         Circuit
-                    </h5>
-                </div>
-            </div>
-            <div class="row ms-3 me-3"><!--LC EDA-->
-                <div class="col-sm-3">
-                    <div class="info-box" onclick="window.open('https://lceda.cn/', '_blank')" data-original-title="https://lceda.cn/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/lceda.png" alt="lceda Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">LCEDA</span>
-                          <span class="info-box-text">Chinese EDA, one-stop Service</span>
-                        </div>
-                      </div>
-                </div>
-            </div>
-            <div class="app-content-header"><!--begin::Control-->
-                <div class="container-fluid">
-                    <h5 id="Control"> <!-- normal text is black -->
-                        <i class="bi bi-tag ms-3 me-2"></i> <!-- ms for margin-left, me for margin-right -->
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <a href="https://lceda.cn/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/lceda.png" alt="LCEDA" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">LCEDA</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Chinese EDA, one-stop Service</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="Control" class="mb-8">
+                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-base-content">
+                        <i class="bi bi-sliders text-success"></i>
                         Control
-                    </h5>
-                </div>
-            </div>
-            <div class="row ms-3 me-3">
-                <div class="col-sm-3"><!--Eigen-->
-                    <div class="info-box" onclick="window.open('https://eigen.tuxfamily.org/index.php?title=Main_Page', '_blank')" data-original-title="https://eigen.tuxfamily.org/index.php?title=Main_Page">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/eigen.png" alt="Eigen Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Eigen</span>
-                          <span class="info-box-text">C++ Library for Linear Algebra</span>
-                        </div>
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <a href="https://eigen.tuxfamily.org/index.php?title=Main_Page" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/eigen.png" alt="Eigen" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Eigen</h3>
+                                    <p class="text-sm text-base-content/70 truncate">C++ Library for Linear Algebra</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://fishros.org.cn/forum/topic/20/%E5%B0%8F%E9%B1%BC%E7%9A%84%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E7%B3%BB%E5%88%97" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/fishros.png" alt="fishros" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">fishros</h3>
+                                    <p class="text-sm text-base-content/70 truncate">install ROS/ROS2 simply</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="col-sm-3"><!--fishros-->
-                    <div class="info-box" onclick="window.open('https://fishros.org.cn/forum/topic/20/%E5%B0%8F%E9%B1%BC%E7%9A%84%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E7%B3%BB%E5%88%97', '_blank')" data-original-title="https://fishros.org.cn/forum/topic/20/%E5%B0%8F%E9%B1%BC%E7%9A%84%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E7%B3%BB%E5%88%97">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/fishros.png" alt="fishros Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">fishros</span>
-                          <span class="info-box-text">install ROS/ROS2 simply</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="app-content-header"> 
-                <div class="container-fluid">
-                    <h5 id="ThoughtfulBlogs"> <!-- normal text is black -->
-                        <i class="bi bi-tag ms-3 me-2"></i> <!-- ms for margin-left, me for margin-right -->
+                </section>
+
+                <section id="ThoughtfulBlogs" class="mb-8">
+                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-base-content">
+                        <i class="bi bi-pen text-secondary"></i>
                         Thoughtful Blogs
-                    </h5>
-                </div>
-            </div>
-            <div class="row ms-3 me-3">
-                <div class="col-sm-3"><!--Rodney Brooks-->
-                    <div class="info-box" onclick="window.open('https://rodneybrooks.com/', '_blank')" data-original-title="https://rodneybrooks.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/github.png" alt="Rod Brooks Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Rodney Brooks's blog</span>
-                          <span class="info-box-text">Robots, AI, and other stuff</span>
-                        </div>
-                      </div>
-                </div>
-            </div>
-            <div class="app-content-header"> 
-                <div class="container-fluid">
-                    <h5 id="NavRecommendation"> <!-- normal text is black -->
-                        <i class="bi bi-tag ms-3 me-2"></i> <!-- ms for margin-left, me for margin-right -->
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <a href="https://rodneybrooks.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/github.png" alt="Rodney Brooks" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Rodney Brooks's blog</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Robots, AI, and other stuff</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="NavRecommendation" class="mb-8">
+                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-base-content">
+                        <i class="bi bi-compass text-primary"></i>
                         Nav Recommendation
-                    </h5>
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <a href="https://nullno.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/nullno.png" alt="Nullno" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">Nullno</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Robotics Resource Nav Page</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://webstack.cc/cn/index.html" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/webstack.png" alt="WebStack" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">WebStack</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Nav Site for Designers</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://cnspub.com/" target="_blank" class="card bg-base-100 shadow-md card-hover cursor-pointer">
+                            <div class="card-body flex-row items-center gap-4 p-4">
+                                <img src="./assets/img/logos/cns_nav.png" alt="CNS Academic Nav" class="w-12 h-12 rounded-full">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-semibold truncate">CNS Academic Nav</h3>
+                                    <p class="text-sm text-base-content/70 truncate">Nav Page for Academics</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="footer footer-center p-4 bg-base-100 text-base-content border-t border-base-300">
+                <div>
+                    <p class="text-sm">
+                        Based on <a href="https://github.com/lupinjia/RoboStack" class="link link-primary">RoboStack</a>, 
+                        built with <a href="https://tailwindcss.com" class="link link-secondary">Tailwind CSS</a> & 
+                        <a href="https://daisyui.com" class="link link-accent">DaisyUI</a>
+                    </p>
                 </div>
-            </div>
-            <div class="row ms-3 me-3">
-                <div class="col-sm-3"><!--Nullno-->
-                    <div class="info-box" onclick="window.open('https://nullno.com/', '_blank')" data-original-title="https://nullno.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/nullno.png" alt="Nullno Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">Nullno</span>
-                          <span class="info-box-text">Robotics Resource Nav Page</span>
-                        </div>
-                      </div>
+            </footer>
+        </div>
+
+        <div class="drawer-side z-40">
+            <label for="sidebar-drawer" class="drawer-overlay"></label>
+            <aside class="bg-base-300 w-64 min-h-full sidebar-menu overflow-y-auto">
+                <div class="p-4 border-b border-base-content/10">
+                    <a href="./index.html" class="flex items-center gap-3">
+                        <img src="./assets/img/robostack.png" alt="RoboStack" class="w-10 h-10 rounded-lg shadow">
+                        <span class="text-lg font-bold">RoboStack</span>
+                    </a>
                 </div>
-                <div class="col-sm-3""><!--WebStack-->
-                    <div class="info-box" onclick="window.open('https://webstack.cc/cn/index.html', '_blank')" data-original-title="https://webstack.cc/cn/index.html">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/webstack.png" alt="webstack Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">WebStack</span>
-                          <span class="info-box-text">Nav Site for Designers</span>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-3""><!--CNS Nav-->
-                    <div class="info-box" onclick="window.open('https://cnspub.com/', '_blank')" data-original-title="https://cnspub.com/">
-                        <span class="info-box-icon">
-                            <img src="./assets/img/logos/cns_nav.png" alt="CNS_Nav Logo" class="rounded-circle">
-                        </span>
-                        <div class="info-box-content">
-                          <span class="info-box-text">CNS Academic Nav</span>
-                          <span class="info-box-text">Nav Page for Academics</span>
-                        </div>
-                      </div>
-                </div>
-            </div>
-        </main> <!--end::App Main--> <!--begin::Footer-->
-        <footer class="app-footer"> <!--begin::To the end-->
-            <div class="float-end d-none d-sm-inline">Anything you want</div> <!--end::To the end--> <!--begin::Copyright--> <strong>
-                Based on
-                <a href="https://github.com/ColorlibHQ/AdminLTE" class="text-decoration-none">AdminLTE</a>, under MIT License.
-            </strong>
-            <!--end::Copyright-->
-        </footer> <!--end::Footer-->
-    </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
-    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-    <script src="./assets/js/adminlte.js"></script> <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+                <nav class="p-2">
+                    <ul class="menu menu-lg gap-1">
+                        <li>
+                            <a href="#FrequentlyUsed" class="gap-3">
+                                <i class="bi bi-star-fill text-warning"></i>
+                                Frequently Used
+                            </a>
+                        </li>
+                        <li>
+                            <details open>
+                                <summary class="gap-3">
+                                    <i class="bi bi-newspaper text-info"></i>
+                                    News & Community
+                                </summary>
+                                <ul>
+                                    <li><a href="#News">News</a></li>
+                                    <li><a href="#TechCommunity">Tech Community</a></li>
+                                    <li><a href="#EverydayLife">Everyday Life</a></li>
+                                </ul>
+                            </details>
+                        </li>
+                        <li>
+                            <details open>
+                                <summary class="gap-3">
+                                    <i class="bi bi-tools text-success"></i>
+                                    Handy Tools
+                                </summary>
+                                <ul>
+                                    <li><a href="#ResearchTools">Research Tools</a></li>
+                                    <li><a href="#OfficeTools">Office Tools</a></li>
+                                    <li><a href="#SearchTools">Search Tools</a></li>
+                                    <li><a href="#VPN">VPN</a></li>
+                                </ul>
+                            </details>
+                        </li>
+                        <li>
+                            <details open>
+                                <summary class="gap-3">
+                                    <i class="bi bi-gear text-secondary"></i>
+                                    Tech Resources
+                                </summary>
+                                <ul>
+                                    <li><a href="#Simulation&RobotLearning">Simulation & Robot Learning</a></li>
+                                    <li><a href="#Circuit">Circuit</a></li>
+                                    <li><a href="#Control">Control</a></li>
+                                </ul>
+                            </details>
+                        </li>
+                        <li>
+                            <a href="#ThoughtfulBlogs" class="gap-3">
+                                <i class="bi bi-pen text-accent"></i>
+                                Thoughtful Blogs
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#NavRecommendation" class="gap-3">
+                                <i class="bi bi-compass text-primary"></i>
+                                Nav Recommendation
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+    </div>
+
     <script>
-        const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
-        const Default = {
-            scrollbarTheme: "os-theme-light",
-            scrollbarAutoHide: "leave",
-            scrollbarClickScroll: true,
-        };
-        document.addEventListener("DOMContentLoaded", function() {
-            const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
-            if (
-                sidebarWrapper &&
-                typeof OverlayScrollbarsGlobal?.OverlayScrollbars !== "undefined"
-            ) {
-                OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
-                    scrollbars: {
-                        theme: Default.scrollbarTheme,
-                        autoHide: Default.scrollbarAutoHide,
-                        clickScroll: Default.scrollbarClickScroll,
-                    },
-                });
+        document.getElementById('theme-toggle').addEventListener('change', function() {
+            const html = document.documentElement;
+            if (this.checked) {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.setAttribute('data-theme', 'robostack');
+                localStorage.setItem('theme', 'robostack');
             }
         });
-    </script> <!--end::OverlayScrollbars Configure--> <!--end::Script-->
-</body><!--end::Body-->
 
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.getElementById('theme-toggle').checked = savedTheme === 'dark';
+        }
+
+        document.querySelectorAll('.drawer-side a[href^="#"]').forEach(link => {
+            link.addEventListener('click', () => {
+                const drawer = document.getElementById('sidebar-drawer');
+                if (window.innerWidth < 1024) {
+                    drawer.checked = false;
+                }
+            });
+        });
+    </script>
+</body>
 </html>
